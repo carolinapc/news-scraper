@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #adb9ad;
+}
+
+main {
+  flex: 1 0 auto;
+}
+.page-footer{
+  text-align: center;
+}
