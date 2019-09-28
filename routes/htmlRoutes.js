@@ -5,24 +5,27 @@ let db = require("../models");
 module.exports = function (app) {
   //index
   app.get("/", function (req, res) {
-    db.Article.find({})
-      .then(function(dbArticle) {
-        res.render("index",dbArticle);
+    db.Article.find({saved: false})
+      .then(function (articles) {
+        res.render("index", { articles: articles });
       })
       .catch(function(err) {
-        // If an error occurred, send it to the client
         res.json(err);
       });
     
   });
 
   //saved
-  app.get("/", function (req, res) {
-    res.render("saved");
+  app.get("/saved", function (req, res) {
+    db.Article.find({saved: true})
+      .then(function(articles) {
+        res.render("saved",{articles: articles});
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+    
   });
 
-  //redirect to index
-  app.get("*", function (req, res) {
-    res.redirect("/");
-  });
+  
 };

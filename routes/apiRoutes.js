@@ -4,26 +4,22 @@ let db = require("../models");
 
 module.exports = function (app) {
   // A GET route for scraping the echoJS website
-  app.get("/scrape", function(req, res) {
+  app.get("/api/scrape", function (req, res) {
+    
     // First, we grab the body of the html with axios
-    axios.get("http://www.echojs.com/").then(function(response) {
+    axios.get("https://globalnews.ca").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
-
+      
       // Now, we grab every h2 within an article tag, and do the following:
-      $("article h2").each(function(i, element) {
+      $(".tab-panel .story article").each(function(i, element) {
         // Save an empty result object
         var result = {};
-
-        // Add the text and href of every link, and save them as properties of the result object
-        result.title = $(this)
-          .children("a")
-          .text();
-        result.link = $(this)
-          .children("a")
-          .attr("href");
-
-        // Create a new Article using the `result` object built from scraping
+        
+        result.title = $(this).children(".story-h").children("a").text();
+        result.url = $(this).children("a").attr("href");
+        result.summary = $(this).children(".story-txt").children("p").text().split("Continue reading")[0];
+        
         db.Article.create(result)
           .then(function(dbArticle) {
             // View the added result in the console
@@ -37,6 +33,32 @@ module.exports = function (app) {
 
       // Send a message to the client
       res.send("Scrape Complete");
+    });
+    
+  });
+
+  app.post("/api/articles", function (req, res) {
+    
+    db.Article.findByIdAndUpdate(req.body.id, { saved: true }, function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send("Article Saved");
+      }
+    });
+  });
+
+  app.delete("/api/articles", function (req, res) {
+    
+    db.Article.findByIdAndDelete(req.body.id, function (err, result) {
+      if (err) {
+        console.log(err)
+      }
+      else {
+        console.log(req.body.id);
+        res.send("Article Deleted");
+      }
     });
   });
 

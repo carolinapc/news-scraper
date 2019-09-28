@@ -1,4 +1,8 @@
 <div class="row">
+  <h6>Saved</h6>
+</div>
+
+<div class="row">
   {{#each articles}}
   <div class="col s12 m12">
     <div class="card darken-1">
@@ -8,7 +12,7 @@
       </div>
       <div class="card-action">
         <a href="{{url}}" target="_blank" class="btn">View More...</a>
-        <a href="#" data-id="{{_id}}" class="btn btn-save-article">Save Article</a>
+        <a href="#" data-id="{{_id}}" class="btn btn-del-article">Delete Article</a>
       </div>
     </div>
   </div>

@@ -32,9 +32,15 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/news-scraper", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost/news-scraper", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
 
 // Routes
+require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // Start the server
