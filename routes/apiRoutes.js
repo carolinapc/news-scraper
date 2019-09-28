@@ -6,33 +6,24 @@ module.exports = function (app) {
   // A GET route for scraping the echoJS website
   app.get("/api/scrape", function (req, res) {
     
-    // First, we grab the body of the html with axios
     axios.get("https://globalnews.ca").then(function(response) {
-      // Then, we load that into cheerio and save it to $ for a shorthand selector
+
       var $ = cheerio.load(response.data);
-      
-      // Now, we grab every h2 within an article tag, and do the following:
+
       $(".tab-panel .story article").each(function(i, element) {
-        // Save an empty result object
-        var result = {};
+
+        var data = {};
         
-        result.title = $(this).children(".story-h").children("a").text();
-        result.url = $(this).children("a").attr("href");
-        result.summary = $(this).children(".story-txt").children("p").text().split("Continue reading")[0];
+        data.title = $(this).children(".story-h").children("a").text();
+        data.url = $(this).children("a").attr("href");
+        data.summary = $(this).children(".story-txt").children("p").text().split("Continue reading")[0];
         
-        db.Article.create(result)
-          .then(function(dbArticle) {
-            // View the added result in the console
-            console.log(dbArticle);
-          })
-          .catch(function(err) {
-            // If an error occurred, log it
-            console.log(err);
-          });
+        db.Article.create(data).then(function () {}).catch(function(){});
+        
       });
 
-      // Send a message to the client
-      res.send("Scrape Complete");
+      res.send("Scrape Complete");    
+      
     });
     
   });
@@ -53,11 +44,22 @@ module.exports = function (app) {
     
     db.Article.findByIdAndDelete(req.body.id, function (err, result) {
       if (err) {
-        console.log(err)
+        console.log(err);
       }
       else {
-        console.log(req.body.id);
         res.send("Article Deleted");
+      }
+    });
+  });
+
+  app.delete("/api/articles/all", function (req, res) {
+    console.log(1);
+    db.Article.deleteMany({}, function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send("All Articles Deleted");
       }
     });
   });
