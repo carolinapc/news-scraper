@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Special+Elite&display=swap');
-
+*{
+  font-family: 'Special Elite', cursive;
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -15,25 +17,16 @@ main {
 }
 
 .brand-logo{
-  font-family: 'Special Elite', cursive;
   margin-left: 10px;
-}
-
-h5 {
-  font-family: 'Special Elite', cursive !important;
 }
 
 .wrap-internal-title{
   margin-top: 10px;
 }
 
-img{
+.wrap-internal-title img{
   width: 60px;
   height: 60px;
   border-radius: 200px;
   margin-top: 2px;
-}
-
-a{
-  font-family: 'Special Elite', cursive;
 }
