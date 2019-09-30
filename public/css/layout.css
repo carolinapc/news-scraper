@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Special+Elite&display=swap');
 *{
   font-family: 'Special Elite', cursive;
+  box-sizing: border-box;
 }
 input, button{
   font-family: 'Special Elite', cursive;
@@ -22,6 +23,35 @@ main {
 
 .brand-logo{
   margin-left: 10px;
+}
+
+.modal-header{
+  position: sticky;
+  top: -30px;
+  width: auto;
+  padding-top: 15px;
+  z-index: 10;
+  background-color: #fafafa;
+}
+.wrap-comments{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+.wrap-comments a{
+  justify-self: flex-end;
+}
+
+.modal-content{
+  vertical-align: text-bottom;
+  overflow: auto;
+}
+.modal-content p{
+  margin-left: 20px;
+}
+.modal-footer input{
+  height: 35px !important;
+  
 }
 
 .wrap-internal-title{

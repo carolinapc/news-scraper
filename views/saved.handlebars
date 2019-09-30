@@ -15,10 +15,16 @@
   </div>
   <div id="modal-{{_id}}" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4><i class="material-icons">comment</i> Comments</h4>
-      <h6>{{title}}</h6>
-      <hr>
-      
+      <div class="modal-header">
+        <div class="wrap-comments">
+          <h4><i class="material-icons">comment</i> Comments</h4>
+          <a href="#!" class="btn-floating modal-close waves-effect red"><i class="material-icons">close</i></a>
+        </div>
+        
+        <h6>{{title}}</h6>
+        <hr>
+      </div>
+
       {{#each comments}}
       <p>
         <a class="btn-floating btn-small waves-effect waves-light red btn-del-comment" data-id="{{_id}}" data-article-id="{{../_id}}"><i class="material-icons">delete</i> </a>
@@ -26,13 +32,9 @@
       </p>
       {{/each}}
     </div>
-    <div class="modal-footer row">
-      <div class="input-field col s10 m10">
+    <div class="modal-footer">
         <input placeholder="Type your comment" class="comment" type="text">
-      </div>
-      <div class="input-field col s2 m2">
-        <a href="#!" class="btn modal-close">Close</a>
-      </div>
+        {{!-- <a href="#!" class="btn btn-small waves-effect waves-light">Close</a> --}}
     </div>
   </div>
   {{/each}}

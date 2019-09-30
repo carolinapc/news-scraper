@@ -86,6 +86,11 @@ function renderNewComment(commentId, modalId, comment) {
   $newP.append(" " + comment);
   $comments.append($newP);
   $comments.focus();
+  
+  let modalCommentsId = `modal-content-${modalId}`;
+  $comments.attr("id", modalCommentsId);
+
+  document.getElementById(modalCommentsId).scrollTop = document.getElementById(modalCommentsId).scrollHeight;
 }
 
 function openComments() {
