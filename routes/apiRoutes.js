@@ -113,8 +113,6 @@ module.exports = function (app) {
         });
       })
       .then(function () {
-        console.log(req.params.articleId);
-        console.log(req.params.id);
         res.json({});
       })
       .catch(function(err) {

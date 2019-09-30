@@ -4,6 +4,7 @@ let exphbs = require("express-handlebars");
 let mongoose = require("mongoose");
 
 let PORT = process.env.PORT || 3000;
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news-scraper";
 
 // Initialize Express
 let app = express();
@@ -32,7 +33,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/news-scraper", {
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
