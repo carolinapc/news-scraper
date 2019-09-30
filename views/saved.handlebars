@@ -1,4 +1,8 @@
 <div class="row">
+  {{#unless articles}}
+    <p class="center">There are no articles saved</p>
+  {{/unless}}
+  
   {{#each articles}}
   <div class="col s12 m12">
     <div class="card darken-1 sticky-action">

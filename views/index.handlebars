@@ -1,4 +1,11 @@
 <div class="row" id="articles">
+  {{#unless articles}}
+    <p class="center">There are no articles scraped</p>
+    <p class="center">
+      <a href="#" class="btn scrape">Scrape New Articles</a>
+    </p>
+  {{/unless}}
+
   {{#each articles}}
   <div class="col s12 m12">
     <div class="card darken-1">
