@@ -2,6 +2,9 @@
 *{
   font-family: 'Special Elite', cursive;
 }
+input, button{
+  font-family: 'Special Elite', cursive;
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -12,6 +15,7 @@ body {
 main {
   flex: 1 0 auto;
 }
+
 .page-footer{
   text-align: center;
 }
