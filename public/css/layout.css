@@ -49,9 +49,12 @@ main {
 .modal-content p{
   margin-left: 20px;
 }
+
+.modal-footer{
+  display: flex;
+}
 .modal-footer input{
   height: 35px !important;
-  
 }
 
 .wrap-internal-title{

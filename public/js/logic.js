@@ -51,11 +51,28 @@ function clearAll() {
 }
 
 function addComment() {
-  if (event.key.toUpperCase() === "ENTER") {
-    let $input = $(this);
+  let $input;
+
+  //if the user clicked on the button
+  if (event.type === "click") {
+    $input = $(this).siblings("input"); //get the input field
+  }
+  else { 
+    //if the user hit enter
+    if (event.key.toUpperCase() === "ENTER") {
+      $input = $(this); //get the input field
+    }
+    else {
+      return;
+    }
+  }
+
+  let comment = $input.val().trim();
+
+  if (comment !== "") {
     let id = $input.data("id");
     let data = {
-      comment: $input.val().trim()
+      comment: comment
     };
     
     $.ajax({
@@ -66,9 +83,10 @@ function addComment() {
       
       renderNewComment(article.comments[article.comments.length-1], id, data.comment);
       $input.val("");
-
+  
     });
   }
+  
 }
 
 function renderNewComment(commentId, modalId, comment) {
@@ -123,6 +141,7 @@ $(document).ready(function () {
   $(".clear-all").on("click", clearAll);
   $(".modal-trigger").on("click", openComments);
   $(".comment").on("keypress", addComment);
+  $(".btn-add-comment").on("click", addComment);
   $(".btn-del-comment").on("click", deleteComment);
 
   //LAYOUT
