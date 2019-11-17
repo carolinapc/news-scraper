@@ -1,4 +1,4 @@
-# news-scraper
+# News Scraper
 
 A website that scrapes the latest news from Global News website, and allow to save, delete and add comments.
 
