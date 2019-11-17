@@ -6,12 +6,12 @@ A website that scrapes the latest news from Global News website, and allow to sa
 
 ![preview](https://carolinapc.github.io/assets/images/news-scraper.png)
 
-## Technologies and NPM Packages Used
+## Technologies Used
 
-It was built with Node.js and MongoDB. Here are the main NPM packages used:
-
-* Express
-* Express-handlebars
-* Cheerio
-* Mongoose
-* Axios
+- Node.js
+- Express
+- Express-handlebars
+- Cheerio
+- Mongoose
+- Axios
+- Materialize css
