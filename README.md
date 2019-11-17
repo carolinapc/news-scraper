@@ -2,8 +2,9 @@
 
 A website that scrapes the latest news from Global News website, and allow to save, delete and add comments.
 
-
 [Deployed Website](https://news-scraper-cp.herokuapp.com/)
+
+![preview](https://carolinapc.github.io/assets/images/news-scraper.png)
 
 ## Technologies and NPM Packages Used
 
